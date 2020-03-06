@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Excercice 2</title>
+    <style>
+        #result_cnfrmation {
+            background-color: brown;
+            width: 100%;
+            height: 100%;
+        }
+
+        #td_result_cnfrmation {
+            width: 60%;
+            height: 100%;
+            /* background-color: green; */
+        }
+
+        img {
+            width: 45px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        var regexHigh = /[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]{8}$/gi;
+        var regexMedium = /^[a-zA-Z0-9]{8}$/;
+        $(document).ready(function () {
+            $("#i_nv_mot_pass").keyup(function () {
+                var password = this.value;
+                password = $.trim(password);
+                var test1 = regexHigh.test(password);
+                var test2 = regexMedium.test(password);
+                if (password.length != 0) {
+                    if (test2) {
+                        $(".errur").html('<img src="icon.png" alt="">');
+                        $("#result_cnfrmation").css('background-color', 'orange');
+                        $("#i_nv_mot_pass").css('border-color', 'orange');
+                    }
+                    else if (test1) {
+                        $(".errur").html('<img src="unval.png" alt="">');
+                        $("#result_cnfrmation").css('background-color', 'green');
+                        $("#i_nv_mot_pass").css('border-color', 'green');
+
+                    }
+                    else {
+                        $(".errur").html('<img src="unval.png" alt="">');
+                        $("#result_cnfrmation").css('background-color', 'red');
+                        $("#i_nv_mot_pass").css('border-color', 'red');
+                    }
+                }
+
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <section>
+        <div>
+            <table>
+                <tr>
+                    <td>
+                        <label for="">USER ID</label>
+                    </td>
+                    <td>
+                        <input type="text" id="i_nom">
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="">Password :</label>
+                    </td>
+                    <td>
+                        <input type="password" id="i_motpass_cournt">
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="">Newpassword:</label>
+                    </td>
+                    <td>
+                        <input type="password" id="i_nv_mot_pass" onkeyup="lookup(this.value);">
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" id="td_result_cnfrmation">
+                        <div id="result_cnfrmation">
+                            <span class="errur"></span>
+                        </div>
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="">Re-Password :</label>
+                    </td>
+                    <td>
+                        <input type="password" id="i_confemn_vmot_pass">
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <center>
+                            <input type="button" value="confermer">
+                        </center>
+                    </td>
+                    <td colspan="2">
+
+                    </td>
+                </tr>
+            </table>
+
+
+
+
+
+        </div>
+    </section>
+</body>
+
+</html>

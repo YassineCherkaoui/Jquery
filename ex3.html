@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Exercice 3</title>
+    <style>
+        div{
+            font-size: 30px;
+            text-align: center;
+            border: 1px solid;
+            margin-top: 326px;
+            font-family: cursive;
+        }
+    </style>
+    <script>
+        $.get("DATA.json",function(data, status){
+            if (status == "success") {
+                let str = "";
+                for(let d in data){
+                    str += d+":"+data[d]+"<br>";
+                }
+                $("div").html(str);
+            }else{
+                $("div").html("error"+status);
+            }
+
+        });
+    </script>
+</head>
+<body>
+    <div></div>
+
+</body>
+</html>
